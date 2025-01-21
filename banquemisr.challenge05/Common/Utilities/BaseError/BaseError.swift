@@ -18,3 +18,9 @@ struct BaseError: Error {
 }
 
 extension BaseError: Equatable {}
+
+extension BaseError {
+    static var unexpected: Self {
+        .init(type: .unexpected)
+    }
+}

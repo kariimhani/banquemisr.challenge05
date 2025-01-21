@@ -32,7 +32,7 @@ extension MoviesListViewModel {
             .sink { complition in
                 // TODO: - Handle Errors
             } receiveValue: { movies in
-                // TODO: - Do Something
+                debugPrint(movies.count)
             }
             .store(in: &subscriptions)
     }
