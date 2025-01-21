@@ -8,21 +8,18 @@
 import Foundation
 import Combine
 
-final class APIService: NSObject,
-                        APIServiceContract {
-    /// Singleton instance of APIService class
-    static let shared = APIService()
-
+final class APIService: APIServiceContract {
+    private let networkHandler: NetworkRequestHandler
     private let serviceQueue: DispatchQueue
     
-    private override init() {
+    init(networkHandler: NetworkRequestHandler = URLSession.shared) {
         self.serviceQueue = .init(
             label: "banquemisr.challenge05.api-service",
             qos: .userInteractive,
             attributes: .concurrent
         )
         
-        super.init()
+        self.networkHandler = networkHandler
     }
     
     func request<T: Decodable>(
@@ -30,10 +27,8 @@ final class APIService: NSObject,
         responseType: T.Type = T.self,
         decoder: JSONDecoder = .init()
     ) -> AnyPublisher<T, BaseError> {
-        debugPrint("APIService is requesting: \(request)")
-        
-        return URLSession.shared
-            .dataTaskPublisher(for: request)
+        networkHandler
+            .perform(request)
             .receive(on: serviceQueue)
             .tryMap { response in
                 guard let httpResponse = response.response as? HTTPURLResponse
@@ -60,8 +55,6 @@ final class APIService: NSObject,
 
 private extension APIService {
     func handleError(using error: Error) -> BaseError {
-        print("APIService did throw error", error)
-        
         switch error {
         case URLError.networkConnectionLost,
             URLError.notConnectedToInternet:

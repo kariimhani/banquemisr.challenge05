@@ -1,11 +1,11 @@
 //
-//  ErrorType.swift
+//  BaseErrorType.swift
 //  banquemisr.challenge05
 //
 //  Created by Karim on 1/20/25.
 //
 
-enum ErrorType {
+enum BaseErrorType {
     case badRequest
     case unauthorized
     case forbidden
@@ -17,7 +17,7 @@ enum ErrorType {
     case unexpected
 }
 
-extension ErrorType {
+extension BaseErrorType {
     var code: Int {
         switch self {
         case .badRequest: return 400

@@ -8,9 +8,9 @@
 struct BaseError: Error {
     let code: Int
     let message: String
-    let type: ErrorType
+    let type: BaseErrorType
     
-    init(type: ErrorType) {
+    init(type: BaseErrorType) {
         self.code = type.code
         self.message = type.message
         self.type = type
