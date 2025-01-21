@@ -5,7 +5,7 @@
 //  Created by Karim on 1/20/25.
 //
 
-import UIKit
+import UIKit.UIViewController
 
 extension UIViewController {
     class var nibName: String {

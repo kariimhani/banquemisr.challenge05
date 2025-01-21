@@ -8,5 +8,5 @@
 import Combine
 
 protocol GetMoviesByCategoryUseCaseContract {
-    func execute(using category: MovieCategory) -> AnyPublisher<[MovieResponse], BaseError>
+    func execute(using category: MovieCategory) -> AnyPublisher<[MovieUIModel], BaseError>
 }

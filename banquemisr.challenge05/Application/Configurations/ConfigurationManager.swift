@@ -13,6 +13,7 @@ final class ConfigurationManager {
     public enum UserDefined: String {
         case baseUrl = "BASE_URL"
         case apiKey = "API_KEY"
+        case imageHost = "IMAGE_HOST"
     }
     
     private var infoDict: [String: Any]

@@ -17,7 +17,7 @@ final class MoviesListRemoteService: MoviesListRemoteServiceContract {
     func fetchMovies(by category: String) -> AnyPublisher<MoviesResponse, BaseError> {
         let request = APIBuilder()
             .setMethod(using: .get)
-            .setPath(using: "movie")
+            .setPath(using: Constants.APIPath.movie)
             .setPath(using: category)
             .build()
         

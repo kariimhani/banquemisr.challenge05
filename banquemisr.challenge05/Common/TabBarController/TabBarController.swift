@@ -11,15 +11,25 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        applyStyling()
+        setupViewController()
+    }
+}
+
+private extension TabBarController {
+    func applyStyling() {
+        tabBar.barTintColor = .black
+        tabBar.tintColor = .white
+    }
+    
+    func setupViewController() {
         viewControllers = [
             makeMovieListViewController(for: .playing),
             makeMovieListViewController(for: .popular),
             makeMovieListViewController(for: .upcoming)
         ]
     }
-}
-
-private extension TabBarController {
+    
     func makeMovieListViewController(for category: MovieCategory) -> UIViewController {
         let tabBarItem: UITabBarItem = .init(
             title: category.title,
@@ -31,19 +41,11 @@ private extension TabBarController {
         let viewController: UIViewController = MoviesListViewController(viewModel: viewModel)
         viewController.tabBarItem = tabBarItem
         
-        return UINavigationController(rootViewController: viewController)
+        return NavigationController(rootViewController: viewController)
     }
 }
 
 fileprivate extension MovieCategory {
-    var title: String {
-        switch self {
-        case .playing: return Constants.TabBar.NowPlaying.title
-        case .popular: return Constants.TabBar.Popular.title
-        case .upcoming: return Constants.TabBar.Upcoming.title
-        }
-    }
-    
     var systemImage: String {
         switch self {
         case .playing: return Constants.TabBar.NowPlaying.unselectedImage

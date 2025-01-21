@@ -6,6 +6,8 @@
 	<string>$(API_KEY)</string>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
+	<key>IMAGE_HOST</key>
+	<string>$(IMAGE_HOST)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -25,4 +25,22 @@ enum Constants {
             static let selectedImage: String = "clock.fill"
         }
     }
+    
+    enum APIPath {
+        static let movie: String = "movie"
+    }
+    
+    enum DateFormat {
+        static let responseFormat: String = "yyyy-MM-dd"
+        static let productionYearFormat: String = "(yyyy)"
+    }
+    
+    enum Image {
+        static let host: String = ConfigurationManager.shared.string(key: .imageHost)
+        
+        enum Size {
+            static let small: String = "w500"
+            static let original: String = "Original"
+        }
+    }
 }

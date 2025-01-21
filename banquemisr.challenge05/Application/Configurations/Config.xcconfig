@@ -10,3 +10,4 @@
 
 API_KEY = 24ed99504dc93a045333b2807a43f5d3
 BASE_URL = https:/$()/api.themoviedb.org/3/
+IMAGE_HOST = https:/$()/image.tmdb.org/t/p/

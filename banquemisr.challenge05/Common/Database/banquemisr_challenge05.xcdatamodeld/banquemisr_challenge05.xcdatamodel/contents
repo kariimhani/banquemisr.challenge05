@@ -9,6 +9,7 @@
         <attribute name="title" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
         <attribute name="voteAverage" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="voteCount" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
