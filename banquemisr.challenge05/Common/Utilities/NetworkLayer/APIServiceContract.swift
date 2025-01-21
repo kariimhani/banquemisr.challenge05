@@ -12,8 +12,7 @@ protocol APIServiceContract {
     func request<T: Decodable>(
         using request: URLRequest,
         responseType: T.Type,
-        decoder: JSONDecoder,
-        retry: Int
+        decoder: JSONDecoder
     ) -> AnyPublisher<T, BaseError>
 }
 
@@ -25,8 +24,7 @@ extension APIServiceContract {
         self.request(
             using: request,
             responseType: responseType,
-            decoder: .init(),
-            retry: NetworkConstants.retries
+            decoder: .init()
         )
     }
 }

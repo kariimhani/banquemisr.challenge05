@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    static var nibName: String {
-        String(describing: Self.self)
+    class var nibName: String {
+        String(describing: self)
     }
 }

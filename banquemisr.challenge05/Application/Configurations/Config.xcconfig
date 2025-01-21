@@ -1,0 +1,12 @@
+//
+//  Config.xcconfig
+//  banquemisr.challenge05
+//
+//  Created by Karim on 1/21/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY = 24ed99504dc93a045333b2807a43f5d3
+BASE_URL = https:/$()/api.themoviedb.org/3/

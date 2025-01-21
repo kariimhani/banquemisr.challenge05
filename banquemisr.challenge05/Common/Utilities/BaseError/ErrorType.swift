@@ -6,31 +6,60 @@
 //
 
 enum ErrorType {
-    case connection
+    case badRequest
+    case unauthorized
+    case forbidden
+    case notFound
+    case serverError
+    case invalidResponse
+    case noInternetConnection
     case decoding
-    case exception
     case unexpected
-    case invalidData
 }
 
 extension ErrorType {
     var code: Int {
         switch self {
-        case .connection: return 1
-        case .decoding: return 2
-        case .exception: return 3
-        case .unexpected: return 4
-        case .invalidData: return 5
+        case .badRequest: return 400
+        case .unauthorized: return 401
+        case .forbidden: return 403
+        case .notFound: return 404
+        case .serverError: return 500
+        case .invalidResponse: return 2
+        case .noInternetConnection: return 3
+        case .decoding: return 4
+        case .unexpected: return 5
         }
     }
     
     var message: String {
         switch self {
-        case .connection: return "No Internet Connectin"
-        case .decoding: return "Decoding Failure"
-        case .exception: return "Exception"
-        case .unexpected: return "Unexpected Failure"
-        case .invalidData: return "No Data"
+        case .badRequest:
+            return "The request was invalid. Please check the syntax or parameters and try again."
+            
+        case .unauthorized:
+            return "Authentication is required to access this resource. Please log in and try again."
+            
+        case .forbidden:
+            return "You do not have permission to access this resource. Please check your access rights."
+            
+        case .notFound:
+            return "The requested resource could not be found. Please check the URL or try again later."
+            
+        case .serverError:
+            return "An internal server error occurred. Please try again later."
+            
+        case .invalidResponse:
+            return "The response from the server is invalid or unexpected. Please try again later."
+            
+        case .noInternetConnection:
+            return "No internet connection is available. Please check your network settings and try again."
+            
+        case .decoding:
+            return "There was an error decoding the response data. Please try again later."
+            
+        case .unexpected:
+            return "An unexpected error occurred. Please try again later or contact support if the issue persists."
         }
     }
 }
