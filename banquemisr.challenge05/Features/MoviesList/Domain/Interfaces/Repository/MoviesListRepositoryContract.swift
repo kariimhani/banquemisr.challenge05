@@ -8,5 +8,5 @@
 import Combine
 
 protocol MoviesListRepositoryContract {
-    func getMovies(by category: MovieCategory) -> AnyPublisher<[Movie], BaseError>
+    func getMovies(by category: MovieCategory) -> AnyPublisher<[MovieResponse], BaseError>
 }

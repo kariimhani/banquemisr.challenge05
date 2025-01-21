@@ -14,7 +14,7 @@ final class GetMoviesByCategoryUseCase: GetMoviesByCategoryUseCaseContract {
         self.repository = repository
     }
     
-    func execute(using category: MovieCategory) -> AnyPublisher<[Movie], BaseError> {
+    func execute(using category: MovieCategory) -> AnyPublisher<[MovieResponse], BaseError> {
         repository.getMovies(by: category)
     }
 }

@@ -14,7 +14,7 @@ final class MoviesListRepository: MoviesListRepositoryContract {
         self.service = service
     }
     
-    func getMovies(by category: MovieCategory) -> AnyPublisher<[Movie], BaseError> {
+    func getMovies(by category: MovieCategory) -> AnyPublisher<[MovieResponse], BaseError> {
         service
             .fetchMovies(by: category.rawValue)
             .map(\.results)

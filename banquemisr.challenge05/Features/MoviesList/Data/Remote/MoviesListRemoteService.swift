@@ -14,7 +14,7 @@ final class MoviesListRemoteService: MoviesListRemoteServiceContract {
         self.service = service
     }
     
-    func fetchMovies(by category: String) -> AnyPublisher<Movies, BaseError> {
+    func fetchMovies(by category: String) -> AnyPublisher<MoviesResponse, BaseError> {
         let request = APIBuilder()
             .setMethod(using: .get)
             .setPath(using: "movie")
@@ -23,7 +23,7 @@ final class MoviesListRemoteService: MoviesListRemoteServiceContract {
         
         return service.request(
             using: request,
-            responseType: Movies.self
+            responseType: MoviesResponse.self
         )
     }
 }

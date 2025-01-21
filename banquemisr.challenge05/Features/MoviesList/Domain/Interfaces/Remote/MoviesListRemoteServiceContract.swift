@@ -8,5 +8,5 @@
 import Combine
 
 protocol MoviesListRemoteServiceContract {
-    func fetchMovies(by category: String) -> AnyPublisher<Movies, BaseError>
+    func fetchMovies(by category: String) -> AnyPublisher<MoviesResponse, BaseError>
 }
