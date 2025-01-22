@@ -21,6 +21,7 @@ final class MoviesListRepository: MoviesListRepositoryContract {
     
     func getMovies(by category: MovieCategory) -> AnyPublisher<[MovieResponse], BaseError> {
         let localPublisher = local.fetchMovies(by: category.rawValue)
+            .replaceError(with: .init(results: []))
             .map(\.results)
         
         let remotePublisher = remote.fetchMovies(by: category.rawValue)
@@ -33,8 +34,9 @@ final class MoviesListRepository: MoviesListRepositoryContract {
         
         return localPublisher
             .flatMap {
-                return remotePublisher
-                    .prepend($0)
+                Just($0)
+                    .setFailureType(to: BaseError.self)
+                    .merge(with: remotePublisher)
                     .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()

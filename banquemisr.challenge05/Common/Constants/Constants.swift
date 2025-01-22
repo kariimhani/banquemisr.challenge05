@@ -40,7 +40,7 @@ enum Constants {
         
         enum Size {
             static let small: String = "w500"
-            static let original: String = "Original"
+            static let original: String = "original"
         }
     }
 }

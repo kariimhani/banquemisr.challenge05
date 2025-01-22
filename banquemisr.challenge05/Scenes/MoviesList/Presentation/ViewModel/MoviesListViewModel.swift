@@ -41,7 +41,6 @@ extension MoviesListViewModel {
     func loadMovies() {
         useCase
             .execute(using: category)
-            .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { complition in
                 // TODO: - Handle Errors

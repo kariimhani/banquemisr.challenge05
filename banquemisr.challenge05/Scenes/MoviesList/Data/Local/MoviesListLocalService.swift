@@ -27,9 +27,9 @@ final class MoviesListLocalService: MoviesListLocalServiceContract {
                 request.predicate = NSPredicate(format: "type == %@", category)
                 request.sortDescriptors = [.init(key: "id", ascending: true)]
                 
-                let results = try self.controller
+                let results: [MovieResponse] = try self.controller
                     .fetch(request)
-                    .map { $0.toResponse }
+                    .map { .init($0) }
                 promise(.success(.init(results: results)))
             } catch {
                 promise(.failure(.unexpected))
@@ -41,15 +41,7 @@ final class MoviesListLocalService: MoviesListLocalServiceContract {
     func save(movies: [MovieResponse], for category: String) {
         movies.forEach { movie in
             controller.insert(Movie.self) {
-                $0.id = Int64(movie.id)
-                $0.title = movie.title
-                $0.overview = movie.overview
-                $0.voteCount = movie.voteCount
-                $0.posterPath = movie.posterPath
-                $0.releaseDate = movie.releaseDate
-                $0.voteAverage = movie.voteAverage
-                $0.backdropPath = movie.backdropPath
-                $0.type = category
+                $0.setData(movie, category: category)
             }
         }
         
@@ -57,17 +49,34 @@ final class MoviesListLocalService: MoviesListLocalServiceContract {
     }
 }
 
-private extension Movie {
-    var toResponse: MovieResponse {
-        .init(
-            id: Int(id),
-            title: title,
-            overview: overview,
-            voteCount: voteCount,
-            posterPath: posterPath,
-            releaseDate: releaseDate,
-            voteAverage: voteAverage,
-            backdropPath: backdropPath
+private extension MovieResponse {
+    init(_ movie: Movie) {
+        self.init(
+            id: Int(movie.id),
+            title: movie.title,
+            overview: movie.overview,
+            voteCount: movie.voteCount,
+            posterPath: movie.posterPath,
+            releaseDate: movie.releaseDate,
+            voteAverage: movie.voteAverage,
+            backdropPath: movie.backdropPath
         )
+    }
+}
+
+private extension Movie {
+    func setData(
+        _ movie: MovieResponse,
+        category: String
+    ) {
+        id = Int64(movie.id)
+        title = movie.title
+        overview = movie.overview
+        voteCount = movie.voteCount
+        posterPath = movie.posterPath
+        releaseDate = movie.releaseDate
+        voteAverage = movie.voteAverage
+        backdropPath = movie.backdropPath
+        type = category
     }
 }

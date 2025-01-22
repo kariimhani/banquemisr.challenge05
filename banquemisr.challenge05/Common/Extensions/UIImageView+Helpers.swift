@@ -14,7 +14,7 @@ extension UIImageView {
         and size: String = Constants.Image.Size.original,
         imageFetcher: ImageFetcherContract = ImageFetcher()
     ) {
-        guard let url = URL(string: "\(host)/\(size)/\(path)") else { return }
+        guard let url = URL(string: "\(host)/\(size)\(path)") else { return }
         imageFetcher.downloadImage(from: url) { [weak self] image in
             DispatchQueue.main.async {
                 self?.image = image

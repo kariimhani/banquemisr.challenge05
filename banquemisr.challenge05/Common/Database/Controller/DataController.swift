@@ -24,6 +24,10 @@ final class DataController {
         container = appDelegate.persistentContainer
     }
     
+    func fetch<T>(_ request: NSFetchRequest<T>) throws -> T? {
+        try context.fetch(request).first
+    }
+    
     func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T] {
         try context.fetch(request)
     }

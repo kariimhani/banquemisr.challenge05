@@ -11,8 +11,27 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        delegate = self
+        
         applyStyling()
         setupViewController()
+    }
+}
+
+extension TabBarController: UITabBarControllerDelegate {
+    func tabBarController(
+        _ tabBarController: UITabBarController,
+        shouldSelect viewController: UIViewController
+    ) -> Bool {
+        UIView.setAnimationsEnabled(false)
+        return true
+    }
+    
+    func tabBarController(
+        _ tabBarController: UITabBarController,
+        didSelect viewController: UIViewController
+    ) {
+        UIView.setAnimationsEnabled(true)
     }
 }
 

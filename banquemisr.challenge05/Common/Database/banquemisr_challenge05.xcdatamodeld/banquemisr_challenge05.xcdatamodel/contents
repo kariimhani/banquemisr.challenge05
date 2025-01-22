@@ -17,4 +17,19 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="MovieDetail" representedClassName=".MovieDetail" syncable="YES">
+        <attribute name="backdropPath" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="originalLanguage" attributeType="String"/>
+        <attribute name="overview" attributeType="String"/>
+        <attribute name="posterPath" attributeType="String"/>
+        <attribute name="releaseDate" attributeType="String"/>
+        <attribute name="runtime" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
 </model>

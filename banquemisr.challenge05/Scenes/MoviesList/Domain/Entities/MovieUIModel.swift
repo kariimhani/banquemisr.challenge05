@@ -21,18 +21,18 @@ struct MovieUIModel {
         imagePath = movie.posterPath
         ratingCount = "(\(movie.voteCount))"
         rating = "\(String(format: "%.2f", movie.voteAverage))"
-        title = [movie.title, Self.formattedDate(movie.releaseDate)]
+        title = [movie.title, movie.releaseDate.formattedDate()]
             .compactMap({ $0 })
             .joined(separator: " ")
     }
 }
 
-private extension MovieUIModel {
-    static func formattedDate(_ date: String) -> String? {
+extension String {
+    func formattedDate() -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Constants.DateFormat.responseFormat
 
-        guard let date = dateFormatter.date(from: date)
+        guard let date = dateFormatter.date(from: self)
         else {
             return nil
         }

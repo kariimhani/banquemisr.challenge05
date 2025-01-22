@@ -44,7 +44,7 @@ final class APIService: APIServiceContract {
                 case 404: throw BaseError(type: .notFound)
                 case 500...599: throw BaseError(type: .serverError)
                     
-                default: throw BaseError(type: .unexpected)
+                default: throw BaseError.unexpected
                 }
             }
             .decode(type: responseType, decoder: decoder)
@@ -66,7 +66,7 @@ private extension APIService {
         default:
             guard let baseError = error as? BaseError
             else {
-                return .init(type: .unexpected)
+                return .unexpected
             }
             
             return baseError

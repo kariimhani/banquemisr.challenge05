@@ -87,4 +87,9 @@ extension MoviesListViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        Router.openDetail(for: movie.id, on: self)
+    }
 }

@@ -11,15 +11,16 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        enableLargeTitle()
-        setupAppearance()
+        enableLargeTitleIfNeeded()
+        setupDefaultAppearance()
+        setTintColor()
     }
     
-    func enableLargeTitle() {
-        navigationBar.prefersLargeTitles = true
+    func enableLargeTitle(_ isEnabled: Bool = true) {
+        navigationBar.prefersLargeTitles = isEnabled
     }
     
-    func setupAppearance() {
+    func setupDefaultAppearance() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .black
@@ -27,9 +28,27 @@ class NavigationController: UINavigationController {
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         
+        setAppearance(appearance)
+    }
+    
+    func setupBackgroundColor(_ color: UIColor) {
+        let appearance = navigationBar.standardAppearance
+        appearance.backgroundColor = color
+        
+        setAppearance(appearance)
+    }
+}
+
+private extension NavigationController {
+    func enableLargeTitleIfNeeded() {
+        navigationBar.prefersLargeTitles = true
+    }
+    
+    func setTintColor() {
+        navigationBar.tintColor = .white
+    }
+    
+    func setAppearance(_ appearance: UINavigationBarAppearance) {
         navigationBar.standardAppearance = appearance
-        navigationBar.compactAppearance = appearance
-        navigationBar.scrollEdgeAppearance = appearance
-        navigationBar.compactScrollEdgeAppearance = appearance
     }
 }
