@@ -12,14 +12,14 @@ protocol ImageFetcherContract {
 }
 
 class ImageFetcher: ImageFetcherContract {
-    private let session: URLSession
+    private let session: NetworkRequestHandler
     
-    init(session: URLSession = URLSession.shared) {
+    init(session: NetworkRequestHandler = URLSession.shared) {
         self.session = session
     }
     
     func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        session.dataTask(with: url) { data, response, error in
+        session.perform(url) { data, response, error in
             if (error != nil) {
                 completion(nil)
                 return

@@ -5,23 +5,22 @@
 //  Created by Karim on 1/21/25.
 //
 
-import CoreData
 import UIKit
+import CoreData
 
-final class DataController {
+final class DataController: DataControllerContract {
     private let container: NSPersistentContainer
     
-    var context: NSManagedObjectContext  {
+    private var context: NSManagedObjectContext  {
         container.viewContext
     }
     
-    init() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        else {
-            fatalError("Failed to load AppDelegate")
+    init(container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer) {
+        guard let container else {
+            fatalError("Failed to load Container")
         }
         
-        container = appDelegate.persistentContainer
+        self.container = container
     }
     
     func fetch<T>(_ request: NSFetchRequest<T>) throws -> T? {

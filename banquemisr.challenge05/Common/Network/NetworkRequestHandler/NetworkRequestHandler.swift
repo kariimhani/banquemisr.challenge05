@@ -9,4 +9,5 @@ import Foundation
 
 protocol NetworkRequestHandler {
     func perform(_ request: URLRequest) -> URLSession.DataTaskPublisher
+    func perform(_ url: URL, completionHandler: @escaping @Sendable (Data?, URLResponse?, (any Error)?) -> Void) -> URLSessionDataTask
 }
