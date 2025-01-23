@@ -24,6 +24,17 @@ enum MockData {
             ]
     )
     
+    static var movieDetailResponse: MovieDetailResponse = .init(
+        id: 1,
+        title: "Title",
+        posterPath: "Poster",
+        backdropPath: "Backdrop",
+        runtime: 100,
+        releaseDate: "Release Date",
+        originalLanguage: "Language",
+        overview: "Overview"
+    )
+    
     static var movie: Movie {
         let entity = Movie(context: TestCoreDataStack.shared.viewContext)
         entity.id = Int64(123456)

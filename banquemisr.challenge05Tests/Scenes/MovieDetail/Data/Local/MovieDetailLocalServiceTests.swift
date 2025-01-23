@@ -11,16 +11,19 @@ import CoreData
 @testable import banquemisr_challenge05
 
 final class MovieDetailLocalServiceTests: XCTestCase {
+    private var controller: MockDataController!
     private var sut: MovieDetailLocalService!
     
     override func setUp() {
         super.setUp()
         
-        sut = .init(controller: MockDataController(isSuccess: true))
+        controller = MockDataController(isSuccess: true)
+        sut = .init(controller: controller)
     }
     
     override func tearDown() {
         sut = nil
+        controller = nil
         
         super.tearDown()
     }
@@ -50,7 +53,8 @@ final class MovieDetailLocalServiceTests: XCTestCase {
     
     func testSUT_whenFetchMovieCalled_returnException() {
         // Given
-        sut = .init(controller: MockDataController(isSuccess: false))
+        controller = MockDataController(isSuccess: false)
+        sut = .init(controller: controller)
         let expectation = expectation(description: "testSUT_whenFetchMovieCalled_returnException")
         
         // When
@@ -68,5 +72,25 @@ final class MovieDetailLocalServiceTests: XCTestCase {
         // Then
         waitForExpectations(timeout: 1)
         cancellable.cancel()
+    }
+    
+    func testSUT_whenSaveIsCalled_shouldSaveData() {
+        // Given
+        let movie: MovieDetailResponse = .init(
+            id: .zero,
+            title: "",
+            posterPath: "",
+            backdropPath: "",
+            runtime: .zero,
+            releaseDate: "",
+            originalLanguage: "",
+            overview: ""
+        )
+        
+        // When
+        sut.save(movie: movie)
+        
+        // Then
+        XCTAssertTrue(controller.isSaved)
     }
 }

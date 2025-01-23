@@ -11,16 +11,19 @@ import CoreData
 @testable import banquemisr_challenge05
 
 final class MoviesListLocalServiceTests: XCTestCase {
+    private var controller: MockDataController!
     private var sut: MoviesListLocalService!
     
     override func setUp() {
         super.setUp()
         
-        sut = .init(controller: MockDataController(isSuccess: true))
+        controller = MockDataController(isSuccess: true)
+        sut = .init(controller: controller)
     }
     
     override func tearDown() {
         sut = nil
+        controller = nil
         
         super.tearDown()
     }
@@ -68,5 +71,26 @@ final class MoviesListLocalServiceTests: XCTestCase {
         // Then
         waitForExpectations(timeout: 1)
         cancellable.cancel()
+    }
+    
+    func testSUT_whenSaveIsCalled_shouldSaveData() {
+        // Given
+        let movie: MovieResponse = .init(
+            id: .zero,
+            title: "",
+            overview: "",
+            voteCount: .zero,
+            posterPath: "",
+            releaseDate: "",
+            voteAverage: .zero,
+            backdropPath: ""
+        )
+        
+        // When
+        sut.save(movies: [movie], for: "category")
+        
+        // Then
+        XCTAssertTrue(controller.isInserted)
+        XCTAssertTrue(controller.isSaved)
     }
 }
