@@ -50,7 +50,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "71A1AF082D3EBE5A00DF3366"
+               BlueprintIdentifier = "71DD506E2D4305EA0047D28E"
                BuildableName = "banquemisr.challenge05UITests.xctest"
                BlueprintName = "banquemisr.challenge05UITests"
                ReferencedContainer = "container:banquemisr.challenge05.xcodeproj">

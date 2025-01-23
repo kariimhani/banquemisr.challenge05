@@ -21,10 +21,6 @@ class MovieDetailViewModel: MovieDetailViewModelContract {
         movieId = id
     }
 }
-
-// MARK: - OUTPUTS
-
-
 // MARK: - INPUTS
 
 extension MovieDetailViewModel {

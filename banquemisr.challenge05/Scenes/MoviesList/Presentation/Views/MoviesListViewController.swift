@@ -108,3 +108,4 @@ extension MoviesListViewController {
         Router.openDetail(for: movie.id, on: self)
     }
 }
+

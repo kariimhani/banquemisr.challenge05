@@ -9,7 +9,7 @@
 import CoreData
 
 enum MockData {
-    static var moviesResponse: MoviesResponse = .init(
+    static let moviesResponse: MoviesResponse = .init(
             results: [
                 .init(
                     id: 1,
@@ -23,8 +23,11 @@ enum MockData {
                 )
             ]
     )
+    static let moviesUI: [MovieUIModel] = moviesResponse
+        .results
+        .map({ .init(movie: $0) })
     
-    static var movieDetailResponse: MovieDetailResponse = .init(
+    static let movieDetailResponse: MovieDetailResponse = .init(
         id: 1,
         title: "Title",
         posterPath: "Poster",
@@ -34,6 +37,7 @@ enum MockData {
         originalLanguage: "Language",
         overview: "Overview"
     )
+    static let movieDetailUI: MovieDetailUIModel = .init(movieDetailResponse)
     
     static var movie: Movie {
         let entity = Movie(context: TestCoreDataStack.shared.viewContext)

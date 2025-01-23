@@ -36,7 +36,7 @@ class MockGetMoviesByCategoryUseCase: GetMoviesByCategoryUseCaseContract {
     
     func execute(using category: MovieCategory) -> AnyPublisher<[MovieUIModel], BaseError> {
         if isSuccess {
-            return Just(MockData.moviesResponse.results.map({ .init(movie: $0) }))
+            return Just(MockData.moviesUI)
                 .setFailureType(to: BaseError.self)
                 .eraseToAnyPublisher()
         }

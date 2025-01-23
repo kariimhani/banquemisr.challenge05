@@ -27,7 +27,7 @@ final class GetMovieDetailUseCaseTests: XCTestCase {
     }
     
     func testSUT_whenExecuteCalled_returnSuccessfulResponse() {
-        let expectedResponse: MovieDetailUIModel = .init(MockData.movieDetailResponse)
+        let expectedResponse: MovieDetailUIModel = MockData.movieDetailUI
         let expectation = expectation(description: "testSUT_whenExecuteCalled_returnSuccessfulResponse")
         
         // When

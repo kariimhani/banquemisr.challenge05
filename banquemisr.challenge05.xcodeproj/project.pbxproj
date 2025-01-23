@@ -14,19 +14,11 @@
 			remoteGlobalIDString = 71A1AEE52D3EBE5A00DF3366;
 			remoteInfo = banquemisr.challenge05;
 		};
-		71A1AF0A2D3EBE5A00DF3366 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71A1AEDE2D3EBE5A00DF3366 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 71A1AEE52D3EBE5A00DF3366;
-			remoteInfo = banquemisr.challenge05;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		71A1AEE62D3EBE5A00DF3366 /* banquemisr.challenge05.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = banquemisr.challenge05.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A1AEFF2D3EBE5A00DF3366 /* banquemisr.challenge05Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = banquemisr.challenge05Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		71A1AF092D3EBE5A00DF3366 /* banquemisr.challenge05UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = banquemisr.challenge05UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -70,13 +62,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		71A1AF062D3EBE5A00DF3366 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -94,7 +79,6 @@
 			children = (
 				71A1AEE62D3EBE5A00DF3366 /* banquemisr.challenge05.app */,
 				71A1AEFF2D3EBE5A00DF3366 /* banquemisr.challenge05Tests.xctest */,
-				71A1AF092D3EBE5A00DF3366 /* banquemisr.challenge05UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,26 +131,6 @@
 			productReference = 71A1AEFF2D3EBE5A00DF3366 /* banquemisr.challenge05Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		71A1AF082D3EBE5A00DF3366 /* banquemisr.challenge05UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 71A1AF1A2D3EBE5A00DF3366 /* Build configuration list for PBXNativeTarget "banquemisr.challenge05UITests" */;
-			buildPhases = (
-				71A1AF052D3EBE5A00DF3366 /* Sources */,
-				71A1AF062D3EBE5A00DF3366 /* Frameworks */,
-				71A1AF072D3EBE5A00DF3366 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				71A1AF0B2D3EBE5A00DF3366 /* PBXTargetDependency */,
-			);
-			name = banquemisr.challenge05UITests;
-			packageProductDependencies = (
-			);
-			productName = banquemisr.challenge05UITests;
-			productReference = 71A1AF092D3EBE5A00DF3366 /* banquemisr.challenge05UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -181,10 +145,6 @@
 						CreatedOnToolsVersion = 16.2;
 					};
 					71A1AEFE2D3EBE5A00DF3366 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 71A1AEE52D3EBE5A00DF3366;
-					};
-					71A1AF082D3EBE5A00DF3366 = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 71A1AEE52D3EBE5A00DF3366;
 					};
@@ -206,7 +166,6 @@
 			targets = (
 				71A1AEE52D3EBE5A00DF3366 /* banquemisr.challenge05 */,
 				71A1AEFE2D3EBE5A00DF3366 /* banquemisr.challenge05Tests */,
-				71A1AF082D3EBE5A00DF3366 /* banquemisr.challenge05UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -220,13 +179,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		71A1AEFD2D3EBE5A00DF3366 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		71A1AF072D3EBE5A00DF3366 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -250,13 +202,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		71A1AF052D3EBE5A00DF3366 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -264,11 +209,6 @@
 			isa = PBXTargetDependency;
 			target = 71A1AEE52D3EBE5A00DF3366 /* banquemisr.challenge05 */;
 			targetProxy = 71A1AF002D3EBE5A00DF3366 /* PBXContainerItemProxy */;
-		};
-		71A1AF0B2D3EBE5A00DF3366 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 71A1AEE52D3EBE5A00DF3366 /* banquemisr.challenge05 */;
-			targetProxy = 71A1AF0A2D3EBE5A00DF3366 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -498,40 +438,6 @@
 			};
 			name = Release;
 		};
-		71A1AF1B2D3EBE5A00DF3366 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T6R8STCP63;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.karim.banquemisr-challenge05.banquemisr-challenge05UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = banquemisr.challenge05;
-			};
-			name = Debug;
-		};
-		71A1AF1C2D3EBE5A00DF3366 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T6R8STCP63;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.karim.banquemisr-challenge05.banquemisr-challenge05UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = banquemisr.challenge05;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -558,15 +464,6 @@
 			buildConfigurations = (
 				71A1AF182D3EBE5A00DF3366 /* Debug */,
 				71A1AF192D3EBE5A00DF3366 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		71A1AF1A2D3EBE5A00DF3366 /* Build configuration list for PBXNativeTarget "banquemisr.challenge05UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				71A1AF1B2D3EBE5A00DF3366 /* Debug */,
-				71A1AF1C2D3EBE5A00DF3366 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

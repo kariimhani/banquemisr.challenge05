@@ -23,6 +23,13 @@
         "identifier" : "71A1AEFE2D3EBE5A00DF3366",
         "name" : "banquemisr.challenge05Tests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:banquemisr.challenge05.xcodeproj",
+        "identifier" : "71DD506E2D4305EA0047D28E",
+        "name" : "banquemisr.challenge05UITests"
+      }
     }
   ],
   "version" : 1

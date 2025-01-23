@@ -31,7 +31,6 @@ final class MovieDetailRemoteServiceTests: XCTestCase {
     
     func testSUT_whenFecthMovieCalled_returnSuccessfulResponse() {
         // Given
-        let expectedResponse: MoviesResponse = MockData.moviesResponse
         let expectation = expectation(description: "testSUT_whenFecthMovieCalled_returnSuccessfulResponse")
         
         // When

@@ -27,7 +27,7 @@ final class GetMoviesByCategoryUseCaseTests: XCTestCase {
     }
     
     func testSUT_whenExecuteCalled_returnSuccessfulResponse() {
-        let expectedResponse: [MovieUIModel] = MockData.moviesResponse.results.map({ .init(movie: $0) })
+        let expectedResponse: [MovieUIModel] = MockData.moviesUI
         let expectation = expectation(description: "testSUT_whenExecuteCalled_returnSuccessfulResponse")
         
         // When
