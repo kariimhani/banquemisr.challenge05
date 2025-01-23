@@ -11,8 +11,6 @@ struct MovieDetailUIModel {
     let backgroundImagePath: String
     let posterImagePath: String
     let duration: String
-    let year: String?
-    let language: String
     let description: String
     
     init(_ movie: MovieDetailResponse) {
@@ -22,9 +20,7 @@ struct MovieDetailUIModel {
         description = movie.overview
         
         duration = "\(movie.runtime / 60)h \(movie.runtime % 60)m"
-        language = movie.originalLanguage.uppercased()
-        year = movie.releaseDate.formattedDate()
-        title = [movie.title, year]
+        title = [movie.title, movie.releaseDate.formattedDate()]
             .compactMap({ $0 })
             .joined(separator: " ")
     }

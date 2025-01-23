@@ -15,6 +15,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     init(viewModel: any MovieDetailViewModelContract) {
@@ -56,6 +57,7 @@ private extension MovieDetailViewController {
     func subscribeToMovieDetail() {
         viewModel
             .detail
+            .removeDuplicates(by: { $0.id == $1.id })
             .receive(on: DispatchQueue.main)
             .sink { [weak self] detail in
                 self?.setupViews(using: detail)
@@ -65,6 +67,7 @@ private extension MovieDetailViewController {
     
     func setupViews(using detail: MovieDetailUIModel) {
         titleLabel.text = detail.title
+        durationLabel.text = detail.duration
         descriptionTextView.text = detail.description
         backgroundImageView.download(using: detail.backgroundImagePath)
         posterImageView.download(
