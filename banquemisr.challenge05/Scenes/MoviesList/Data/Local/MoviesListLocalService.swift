@@ -9,9 +9,9 @@ import Combine
 import Foundation
 
 final class MoviesListLocalService: MoviesListLocalServiceContract {
-    private let controller: DataController
+    private let controller: DataControllerContract
     
-    init(controller: DataController = DataController()) {
+    init(controller: DataControllerContract = DataController()) {
         self.controller = controller
     }
     
