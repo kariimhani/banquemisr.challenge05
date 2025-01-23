@@ -19,6 +19,8 @@ extension UIAlertControllerProtocol where Self: UIViewController {
             preferredStyle: .alert
         )
         
+        alert.addAction(.init(title: "Okay", style: .default))
+        
         present(alert, animated: true)
     }
 }
