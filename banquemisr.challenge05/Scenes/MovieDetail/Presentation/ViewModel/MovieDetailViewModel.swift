@@ -11,9 +11,6 @@ import Combine
 class MovieDetailViewModel: MovieDetailViewModelContract {
     private let movieId: Int
     private let useCase: GetMovieDetailUseCaseContract
-    private var subscriptions: Set<AnyCancellable>
-    
-    var detail: PassthroughSubject<MovieDetailUIModel, Never>
     
     init(
         id: Int,
@@ -22,8 +19,6 @@ class MovieDetailViewModel: MovieDetailViewModelContract {
         self.useCase = useCase
         
         movieId = id
-        subscriptions = .init()
-        detail = .init()
     }
 }
 
@@ -37,10 +32,12 @@ extension MovieDetailViewModel {
         useCase
             .execute(using: movieId)
             .receive(on: DispatchQueue.main)
-            .sink { completition in
-                // TODO: - Handle Errors
+            .sink { [weak self] complition in
+                if case .failure(let error) = complition {
+                    self?.state.send(.failure(error.message))
+                }
             } receiveValue: { [weak self] detail in
-                self?.detail.send(detail)
+                self?.state.send(.success(detail))
             }
             .store(in: &subscriptions)
     }

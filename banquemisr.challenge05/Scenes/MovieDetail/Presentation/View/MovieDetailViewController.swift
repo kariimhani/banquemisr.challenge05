@@ -8,7 +8,8 @@
 import UIKit
 import Combine
 
-class MovieDetailViewController: UIViewController {
+class MovieDetailViewController: UIViewController,
+                                 UIAlertControllerProtocol {
     private let viewModel: any MovieDetailViewModelContract
     private var subscriptions: Set<AnyCancellable> = .init()
         
@@ -30,7 +31,7 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subscribeToMovieDetail()
+        subscribeToState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,13 +55,23 @@ class MovieDetailViewController: UIViewController {
 }
 
 private extension MovieDetailViewController {
-    func subscribeToMovieDetail() {
+    func subscribeToState() {
         viewModel
-            .detail
-            .removeDuplicates(by: { $0.id == $1.id })
+            .state
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] detail in
-                self?.setupViews(using: detail)
+            .sink { [weak self] state in
+                switch state {
+                case .failure(let message):
+                    self?.alert(message)
+                    
+                case .success(let data):
+                    if let detail = data as? MovieDetailUIModel {
+                        self?.setupViews(using: detail)
+                    }
+                    
+                default:
+                    break
+                }
             }
             .store(in: &subscriptions)
     }

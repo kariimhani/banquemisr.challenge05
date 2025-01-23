@@ -11,9 +11,6 @@ import Combine
 class MoviesListViewModel: MoviesListViewModelContract {
     private let category: MovieCategory
     private let useCase: GetMoviesByCategoryUseCaseContract
-    private var subscriptions: Set<AnyCancellable>
-    
-    var movies: CurrentValueSubject<[MovieUIModel], Never>
     
     init(
         category: MovieCategory,
@@ -21,9 +18,6 @@ class MoviesListViewModel: MoviesListViewModelContract {
     ) {
         self.category = category
         self.useCase = useCase
-        
-        subscriptions = .init()
-        movies = .init([])
     }
 }
 
@@ -42,10 +36,12 @@ extension MoviesListViewModel {
         useCase
             .execute(using: category)
             .receive(on: DispatchQueue.main)
-            .sink { complition in
-                // TODO: - Handle Errors
+            .sink { [weak self] complition in
+                if case .failure(let error) = complition {
+                    self?.state.send(.failure(error.message))
+                }
             } receiveValue: { [weak self] movies in
-                self?.movies.send(movies)
+                self?.state.send(.success(movies))
             }
             .store(in: &subscriptions)
     }

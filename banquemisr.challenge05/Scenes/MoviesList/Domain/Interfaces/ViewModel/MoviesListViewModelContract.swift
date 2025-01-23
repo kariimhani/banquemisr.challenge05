@@ -7,12 +7,11 @@
 
 import Combine
 
-typealias MoviesListViewModelContract = MoviesListViewModelOutput & MoviesListViewModelIntput
+typealias MoviesListViewModelContract = BaseViewModel & MoviesListViewModelOutput & MoviesListViewModelIntput
 
 /// This protocol is used if your ViewModel contains Output
 protocol MoviesListViewModelOutput {
     var title: String { get }
-    var movies: CurrentValueSubject<[MovieUIModel], Never> { get }
 }
 
 /// This protocol is used if your ViewModel contains Inputs

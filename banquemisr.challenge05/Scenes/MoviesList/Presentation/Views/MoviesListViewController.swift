@@ -8,10 +8,15 @@
 import UIKit
 import Combine
 
-class MoviesListViewController: UITableViewController {
+class MoviesListViewController: UITableViewController,
+                                UIAlertControllerProtocol {
     private let viewModel: any MoviesListViewModelContract
     private var subscriptions: Set<AnyCancellable> = .init()
-    private var movies: [MovieUIModel]
+    private var movies: [MovieUIModel] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
         
     init(viewModel: any MoviesListViewModelContract) {
         self.viewModel = viewModel
@@ -29,7 +34,7 @@ class MoviesListViewController: UITableViewController {
         setupNavigationTitle()
         applyStyling()
         registerCells()
-        subscribeToMovies()
+        subscribeToState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,13 +61,23 @@ private extension MoviesListViewController {
         )
     }
     
-    func subscribeToMovies() {
+    func subscribeToState() {
         viewModel
-            .movies
+            .state
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] movies in
-                self?.movies = movies
-                self?.tableView.reloadData()
+            .sink { [weak self] state in
+                switch state {
+                case .failure(let message):
+                    self?.alert(message)
+                    
+                case .success(let data):
+                    if let moviesData = data as? [MovieUIModel] {
+                        self?.movies = moviesData
+                    }
+                    
+                default:
+                    break
+                }
             }
             .store(in: &subscriptions)
     }
