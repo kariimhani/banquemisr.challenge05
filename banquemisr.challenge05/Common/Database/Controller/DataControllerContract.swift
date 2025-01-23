@@ -2,7 +2,7 @@
 //  DataControllerContract.swift
 //  banquemisr.challenge05
 //
-//  Created by Karim  on 1/23/25.
+//  Created by Karim on 1/23/25.
 //
 
 import CoreData

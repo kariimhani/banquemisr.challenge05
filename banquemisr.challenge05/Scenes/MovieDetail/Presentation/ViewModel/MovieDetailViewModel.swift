@@ -2,7 +2,7 @@
 //  MovieDetailViewModel.swift
 //  banquemisr.challenge05
 //
-//  Created by Karim  on 1/22/25.
+//  Created by Karim on 1/22/25.
 //
 
 import Foundation

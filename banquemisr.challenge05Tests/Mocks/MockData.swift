@@ -2,7 +2,7 @@
 //  MockData.swift
 //  banquemisr.challenge05
 //
-//  Created by Karim  on 1/23/25.
+//  Created by Karim on 1/23/25.
 //
 
 @testable import banquemisr_challenge05
